@@ -9,6 +9,7 @@ Tasks are stored **in-memory** (array), so no database is required.
 
 ### 1. Clone the repository
 
-### 2. Set Up Environment (npm install)
-
-### 2. Run Backend (npm run dev)
+```bash
+git clone <your-repo-url>
+cd task-manager
+```
