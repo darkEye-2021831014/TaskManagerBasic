@@ -1,46 +1,50 @@
-let tasks = [];
+// In-memory storage for tasks with integer IDs
 let currentId = 1;
+let tasks = [];
 
-function createTask(title, description, status) {
-    const newTask = {
-        id: currentId++,
-        title,
-        description: description || "",
-        status: status || "To Do",
-    };
-    tasks.push(newTask);
-    return newTask;
-}
-
+// Get all tasks
 function getAllTasks() {
     return tasks;
 }
 
+// Get task by ID
 function getTaskById(id) {
-    return tasks.find((t) => t.id === id);
+    return tasks.find(task => task.id === parseInt(id));
 }
 
-function updateTask(id, updates) {
-    const task = tasks.find((t) => t.id === id);
-    if (!task) return null;
-
-    if (updates.title) task.title = updates.title;
-    if (updates.description) task.description = updates.description;
-    if (updates.status) task.status = updates.status;
-
+// Create a new task
+function createTask({ title, description, status }) {
+    const task = {
+        id: currentId++,
+        title,
+        description: description || '',
+        status: status || 'To Do'
+    };
+    tasks.push(task);
     return task;
 }
 
+// Update a task
+function updateTask(id, { title, description, status }) {
+    const task = getTaskById(id);
+    if (!task) return null;
+    task.title = title !== undefined ? title : task.title;
+    task.description = description !== undefined ? description : task.description;
+    task.status = status !== undefined ? status : task.status;
+    return task;
+}
+
+// Delete a task
 function deleteTask(id) {
-    const index = tasks.findIndex((t) => t.id === id);
+    const index = tasks.findIndex(task => task.id === parseInt(id));
     if (index === -1) return null;
     return tasks.splice(index, 1)[0];
 }
 
 module.exports = {
-    createTask,
     getAllTasks,
     getTaskById,
+    createTask,
     updateTask,
-    deleteTask,
+    deleteTask
 };
