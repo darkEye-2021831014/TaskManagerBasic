@@ -25,7 +25,12 @@ npm run dev
 ```bash
 GET -> http://localhost:3000/tasks/
 GET -> http://localhost:3000/tasks/1
+GET -> http://localhost:3000/tasks/?sortBy=title
+GET -> http://localhost:3000/tasks/?search=task
+GET -> http://localhost:3000/tasks/?status=To Do
+GET -> http://localhost:3000/tasks/?sortBy=status
 POST -> http://localhost:3000/tasks/
 PUT -> http://localhost:3000/tasks/1
 DELETE -> http://localhost:3000/tasks/1
+PATCH -> http://localhost:3000/tasks/1/complete
 ```
